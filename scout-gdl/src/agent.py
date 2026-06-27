@@ -1,4 +1,5 @@
 """
+"""
 Scout GDL — Agente de scouting inmobiliario para Guadalajara ZMG
 Ejecución diaria automática a las 7:00 am
 """
