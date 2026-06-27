@@ -14,6 +14,7 @@ from pathlib import Path
 import requests
 from anthropic import Anthropic
 from src.notificaciones import notificar
+from src.generar_dashboard import generar_dashboard
 
 logging.basicConfig(
     level=logging.INFO,
@@ -172,15 +173,11 @@ def buscar_apollo_linkedin() -> list:
 
 
 def buscar_google_trends_gdl() -> list:
-    """
-    Detecta terminos inmobiliarios con picos de busqueda en GDL usando pytrends.
-    Sin costo, sin API key. Retorna senales de demanda activa del mercado.
-    """
     try:
         from pytrends.request import TrendReq
         pytrends = TrendReq(hl="es-MX", tz=360, timeout=(10, 25))
 
-        terminos_inmobiliarios = [
+        terminos = [
             "terrenos en venta Guadalajara",
             "departamentos Zapopan",
             "casas Tlajomulco",
@@ -189,35 +186,27 @@ def buscar_google_trends_gdl() -> list:
         ]
 
         resultados = []
-        for i in range(0, len(terminos_inmobiliarios), 5):
-            lote = terminos_inmobiliarios[i:i+5]
+        for i in range(0, len(terminos), 5):
+            lote = terminos[i:i+5]
             try:
-                pytrends.build_payload(
-                    lote,
-                    cat=0,
-                    timeframe="now 7-d",
-                    geo="MX-JAL",
-                )
+                pytrends.build_payload(lote, cat=0, timeframe="now 7-d", geo="MX-JAL")
                 df = pytrends.interest_over_time()
                 if df.empty:
                     continue
-
                 for termino in lote:
                     if termino not in df.columns:
                         continue
                     promedio = int(df[termino].mean())
-                    maximo = int(df[termino].max())
-                    ultimo = int(df[termino].iloc[-1]) if len(df) > 0 else 0
-
+                    maximo   = int(df[termino].max())
+                    ultimo   = int(df[termino].iloc[-1]) if len(df) > 0 else 0
                     if maximo >= 20:
-                        tendencia = "subiendo" if ultimo >= promedio else "estable"
                         resultados.append({
                             "fuente": "google_trends",
                             "termino": termino,
                             "interes_promedio": promedio,
                             "interes_maximo": maximo,
                             "interes_reciente": ultimo,
-                            "tendencia": tendencia,
+                            "tendencia": "subiendo" if ultimo >= promedio else "estable",
                             "region": "Jalisco, Mexico",
                             "descripcion": f"Busqueda activa: '{termino}' con interes {maximo}/100 en Jalisco esta semana",
                         })
@@ -230,7 +219,7 @@ def buscar_google_trends_gdl() -> list:
         return resultados
 
     except ImportError:
-        log.warning("pytrends no instalado - omitiendo Google Trends")
+        log.warning("pytrends no instalado")
         return []
     except Exception as e:
         log.error(f"Error general Google Trends: {e}")
@@ -250,9 +239,9 @@ def analizar_prospectos_con_ia(datos_crudos: list) -> list:
     fecha_hoy = datetime.now().strftime("%Y-%m-%d")
     prompt = f"""Eres un agente especializado en scouting inmobiliario para la Zona Metropolitana de Guadalajara (ZMG), Mexico.
 
-Analiza estos datos crudos recopilados hoy de multiples fuentes y extrae prospectos potenciales para servicios inmobiliarios (compra/venta de terrenos, desarrollos residenciales, proyectos comerciales, inversion inmobiliaria).
+Analiza estos datos crudos recopilados hoy de multiples fuentes y extrae prospectos potenciales para servicios inmobiliarios.
 
-Los datos de "google_trends" representan terminos que la gente esta buscando activamente en Google en Jalisco esta semana - son senales de demanda del mercado muy valiosas.
+Los datos de "google_trends" representan terminos que la gente esta buscando activamente en Google en Jalisco esta semana.
 
 DATOS CRUDOS:
 {json.dumps(datos_crudos, ensure_ascii=False, indent=2)}
@@ -261,23 +250,23 @@ Para cada prospecto identificado, devuelve un JSON con esta estructura exacta:
 {{
   "prospectos": [
     {{
-      "empresa": "nombre de la empresa o termino de busqueda si es trends",
+      "empresa": "nombre de la empresa o termino de busqueda",
       "contacto": "nombre del contacto si esta disponible, sino vacio",
       "zona": "municipio dentro de ZMG",
-      "fuente": "noticias|google_maps|linkedin|twitter|google_trends",
+      "fuente": "noticias|google_maps|linkedin_apollo|google_trends",
       "score": 0-100,
       "prioridad": "hot|warm|cold",
       "senal": "senal de intencion detectada en maximo 80 caracteres",
-      "url": "url de la fuente si existe",
+      "url": "url de la fuente si existe, sino vacio",
       "fecha_deteccion": "{fecha_hoy}"
     }}
   ]
 }}
 
 Criterios de scoring:
-- 80-100 (hot): senal clara de compra/inversion inmediata, expansion activa, busqueda explicita de terrenos, tendencia Google con interes mayor a 70
-- 60-79 (warm): crecimiento visible, contrataciones clave, tendencia Google con interes 40-70
-- 40-59 (cold): presencia relevante pero sin senal inmediata, tendencia Google con interes menor a 40
+- 80-100 (hot): senal clara de compra/inversion inmediata, expansion activa, tendencia Google mayor a 70
+- 60-79 (warm): crecimiento visible, tendencia Google 40-70
+- 40-59 (cold): presencia relevante pero sin senal inmediata
 
 Devuelve SOLO el JSON, sin texto adicional."""
 
@@ -304,15 +293,12 @@ Devuelve SOLO el JSON, sin texto adicional."""
 def guardar_csv(prospectos: list, fecha: str) -> Path:
     path = OUTPUT_DIR / f"scouting_GDL_{fecha}.csv"
     if not prospectos:
-        log.warning("Sin prospectos para guardar")
         return path
-
     campos = ["empresa","contacto","zona","fuente","score","prioridad","senal","url","fecha_deteccion"]
     with open(path, "w", newline="", encoding="utf-8-sig") as f:
         w = csv.DictWriter(f, fieldnames=campos, extrasaction="ignore")
         w.writeheader()
         w.writerows(prospectos)
-
     log.info(f"CSV guardado: {path}")
     return path
 
@@ -330,10 +316,9 @@ def generar_resumen_ia(prospectos: list) -> str:
         return "Sin prospectos para resumir hoy."
 
     top = sorted(prospectos, key=lambda x: x.get("score", 0), reverse=True)[:8]
-
     prompt = f"""Eres mi asistente de ventas inmobiliarias en Guadalajara.
 
-Aqui estan los mejores prospectos detectados hoy, incluyendo tendencias de busqueda en Google:
+Aqui estan los mejores prospectos detectados hoy:
 {json.dumps(top, ensure_ascii=False, indent=2)}
 
 Redacta un briefing ejecutivo en espanol (maximo 200 palabras) que incluya:
@@ -342,7 +327,7 @@ Redacta un briefing ejecutivo en espanol (maximo 200 palabras) que incluya:
 3. Que esta buscando la gente en Google esta semana en Jalisco (si hay datos de trends)
 4. Una recomendacion de accion inmediata
 
-Se directo y accionable, como si fuera un resumen de WhatsApp para arrancar el dia."""
+Se directo y accionable."""
 
     try:
         r = client.messages.create(
@@ -382,6 +367,9 @@ def run():
     resumen = generar_resumen_ia(prospectos)
     resumen_path = OUTPUT_DIR / f"briefing_{fecha}.txt"
     resumen_path.write_text(resumen, encoding="utf-8")
+
+    # Generar dashboard HTML para GitHub Pages
+    generar_dashboard(prospectos, resumen, fecha, OUTPUT_DIR)
 
     log.info(f"BRIEFING DEL DIA:\n{resumen}")
     log.info(f"Scout GDL completado - {len(prospectos)} prospectos encontrados")
