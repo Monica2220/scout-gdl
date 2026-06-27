@@ -29,6 +29,7 @@ log = logging.getLogger(__name__)
 ANTHROPIC_API_KEY = os.environ["ANTHROPIC_API_KEY"]
 NEWSAPI_KEY       = os.environ.get("NEWSAPI_KEY", "")       # newsapi.org (gratis)
 GOOGLE_PLACES_KEY = os.environ.get("GOOGLE_PLACES_KEY", "") # Google Places API
+APOLLO_API_KEY    = os.environ.get("APOLLO_API_KEY", "")    # Apollo.io para LinkedIn
 
 client = Anthropic(api_key=ANTHROPIC_API_KEY)
 
@@ -138,19 +139,61 @@ def buscar_lugares_gdl() -> list[dict]:
     return resultados
 
 
-def buscar_linkedin_simulado() -> list[dict]:
+def buscar_apollo_linkedin() -> list[dict]:
     """
-    LinkedIn no tiene API pública gratuita.
-    Opciones reales:
-      - LinkedIn Sales Navigator API (de pago)
-      - PhantomBuster (scraper con límites)
-      - Apollo.io API (tiene plan gratis con 50 créditos/mes)
-    
-    Por ahora retorna estructura vacía lista para conectar.
-    Ver README para instrucciones de Apollo.io.
+    Busca contactos de empresas inmobiliarias en GDL usando Apollo.io.
+    Plan gratuito: 50 créditos/mes.
+    Retorna contactos con nombre, cargo, empresa y email estimado.
     """
-    log.info("LinkedIn: conecta Apollo.io para datos reales (ver README)")
-    return []
+    if not APOLLO_API_KEY:
+        log.warning("Apollo.io: falta APOLLO_API_KEY en .env")
+        return []
+
+    resultados = []
+    titulos = [
+        "Director General", "Director Comercial", "Director de Desarrollo",
+        "Gerente de Ventas", "Director de Proyectos", "CEO", "Founder",
+    ]
+    keywords = ["inmobiliaria", "desarrolladora", "constructora", "bienes raices"]
+
+    for keyword in keywords:
+        try:
+            r = requests.post(
+                "https://api.apollo.io/v1/mixed_people/search",
+                headers={
+                    "Content-Type": "application/json",
+                    "Cache-Control": "no-cache",
+                    "X-Api-Key": APOLLO_API_KEY,
+                },
+                json={
+                    "q_organization_keyword_tags": [keyword],
+                    "person_locations": ["Guadalajara, Jalisco, Mexico"],
+                    "person_titles": titulos,
+                    "page": 1,
+                    "per_page": 10,
+                },
+                timeout=15,
+            )
+            data = r.json()
+            for persona in data.get("people", []):
+                org = persona.get("organization", {}) or {}
+                resultados.append({
+                    "fuente": "linkedin_apollo",
+                    "nombre": persona.get("name", ""),
+                    "cargo": persona.get("title", ""),
+                    "empresa": org.get("name", ""),
+                    "linkedin": persona.get("linkedin_url", ""),
+                    "email": persona.get("email", ""),
+                    "ciudad": "Guadalajara",
+                    "empleados": org.get("estimated_num_employees", 0),
+                    "industria": org.get("industry", ""),
+                })
+            time.sleep(1)
+        except Exception as e:
+            log.error(f"Error Apollo.io '{keyword}': {e}")
+
+    log.info(f"Contactos Apollo/LinkedIn obtenidos: {len(resultados)}")
+    return resultados
 
 
 def buscar_twitter_simulado() -> list[dict]:
@@ -298,7 +341,7 @@ def run():
     datos_crudos = []
     datos_crudos.extend(buscar_noticias_gdl())
     datos_crudos.extend(buscar_lugares_gdl())
-    datos_crudos.extend(buscar_linkedin_simulado())
+    datos_crudos.extend(buscar_apollo_linkedin())
     datos_crudos.extend(buscar_twitter_simulado())
 
     log.info(f"Total registros crudos: {len(datos_crudos)}")
