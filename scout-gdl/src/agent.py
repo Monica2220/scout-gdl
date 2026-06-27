@@ -32,11 +32,6 @@ APOLLO_API_KEY    = os.environ.get("APOLLO_API_KEY", "")
 
 client = Anthropic(api_key=ANTHROPIC_API_KEY)
 
-ZONAS_ZMG = [
-    "Guadalajara", "Zapopan", "Tlaquepaque",
-    "Tonala", "Tlajomulco de Zuniga", "El Salto", "Juanacatlan",
-]
-
 OUTPUT_DIR = Path("output")
 OUTPUT_DIR.mkdir(exist_ok=True)
 
@@ -92,11 +87,7 @@ def buscar_lugares_gdl() -> list:
 
     resultados = []
     lat, lng = 20.6597, -103.3496
-    tipos = [
-        "real_estate_agency",
-        "general_contractor",
-        "home_builder",
-    ]
+    tipos = ["real_estate_agency", "general_contractor", "home_builder"]
 
     for tipo in tipos:
         try:
@@ -180,6 +171,72 @@ def buscar_apollo_linkedin() -> list:
     return resultados
 
 
+def buscar_google_trends_gdl() -> list:
+    """
+    Detecta terminos inmobiliarios con picos de busqueda en GDL usando pytrends.
+    Sin costo, sin API key. Retorna senales de demanda activa del mercado.
+    """
+    try:
+        from pytrends.request import TrendReq
+        pytrends = TrendReq(hl="es-MX", tz=360, timeout=(10, 25))
+
+        terminos_inmobiliarios = [
+            "terrenos en venta Guadalajara",
+            "departamentos Zapopan",
+            "casas Tlajomulco",
+            "desarrollos residenciales Jalisco",
+            "inversion inmobiliaria Guadalajara",
+        ]
+
+        resultados = []
+        for i in range(0, len(terminos_inmobiliarios), 5):
+            lote = terminos_inmobiliarios[i:i+5]
+            try:
+                pytrends.build_payload(
+                    lote,
+                    cat=0,
+                    timeframe="now 7-d",
+                    geo="MX-JAL",
+                )
+                df = pytrends.interest_over_time()
+                if df.empty:
+                    continue
+
+                for termino in lote:
+                    if termino not in df.columns:
+                        continue
+                    promedio = int(df[termino].mean())
+                    maximo = int(df[termino].max())
+                    ultimo = int(df[termino].iloc[-1]) if len(df) > 0 else 0
+
+                    if maximo >= 20:
+                        tendencia = "subiendo" if ultimo >= promedio else "estable"
+                        resultados.append({
+                            "fuente": "google_trends",
+                            "termino": termino,
+                            "interes_promedio": promedio,
+                            "interes_maximo": maximo,
+                            "interes_reciente": ultimo,
+                            "tendencia": tendencia,
+                            "region": "Jalisco, Mexico",
+                            "descripcion": f"Busqueda activa: '{termino}' con interes {maximo}/100 en Jalisco esta semana",
+                        })
+                time.sleep(2)
+            except Exception as e:
+                log.error(f"Error Google Trends lote: {e}")
+                time.sleep(5)
+
+        log.info(f"Tendencias Google detectadas: {len(resultados)}")
+        return resultados
+
+    except ImportError:
+        log.warning("pytrends no instalado - omitiendo Google Trends")
+        return []
+    except Exception as e:
+        log.error(f"Error general Google Trends: {e}")
+        return []
+
+
 def buscar_twitter_simulado() -> list:
     log.info("Twitter/X: pendiente de configurar")
     return []
@@ -195,6 +252,8 @@ def analizar_prospectos_con_ia(datos_crudos: list) -> list:
 
 Analiza estos datos crudos recopilados hoy de multiples fuentes y extrae prospectos potenciales para servicios inmobiliarios (compra/venta de terrenos, desarrollos residenciales, proyectos comerciales, inversion inmobiliaria).
 
+Los datos de "google_trends" representan terminos que la gente esta buscando activamente en Google en Jalisco esta semana - son senales de demanda del mercado muy valiosas.
+
 DATOS CRUDOS:
 {json.dumps(datos_crudos, ensure_ascii=False, indent=2)}
 
@@ -202,10 +261,10 @@ Para cada prospecto identificado, devuelve un JSON con esta estructura exacta:
 {{
   "prospectos": [
     {{
-      "empresa": "nombre de la empresa",
+      "empresa": "nombre de la empresa o termino de busqueda si es trends",
       "contacto": "nombre del contacto si esta disponible, sino vacio",
       "zona": "municipio dentro de ZMG",
-      "fuente": "noticias|google_maps|linkedin|twitter",
+      "fuente": "noticias|google_maps|linkedin|twitter|google_trends",
       "score": 0-100,
       "prioridad": "hot|warm|cold",
       "senal": "senal de intencion detectada en maximo 80 caracteres",
@@ -216,9 +275,9 @@ Para cada prospecto identificado, devuelve un JSON con esta estructura exacta:
 }}
 
 Criterios de scoring:
-- 80-100 (hot): senal clara de compra/inversion inmediata, expansion activa, busqueda explicita de terrenos
-- 60-79 (warm): crecimiento visible, contrataciones clave, menciones en medios sobre proyectos futuros
-- 40-59 (cold): presencia relevante en el sector pero sin senal inmediata clara
+- 80-100 (hot): senal clara de compra/inversion inmediata, expansion activa, busqueda explicita de terrenos, tendencia Google con interes mayor a 70
+- 60-79 (warm): crecimiento visible, contrataciones clave, tendencia Google con interes 40-70
+- 40-59 (cold): presencia relevante pero sin senal inmediata, tendencia Google con interes menor a 40
 
 Devuelve SOLO el JSON, sin texto adicional."""
 
@@ -274,20 +333,21 @@ def generar_resumen_ia(prospectos: list) -> str:
 
     prompt = f"""Eres mi asistente de ventas inmobiliarias en Guadalajara.
 
-Aqui estan los mejores prospectos detectados hoy:
+Aqui estan los mejores prospectos detectados hoy, incluyendo tendencias de busqueda en Google:
 {json.dumps(top, ensure_ascii=False, indent=2)}
 
 Redacta un briefing ejecutivo en espanol (maximo 200 palabras) que incluya:
 1. Los 3 prospectos mas calientes y por que contactarlos HOY
 2. La zona mas activa del dia
-3. Una recomendacion de accion inmediata
+3. Que esta buscando la gente en Google esta semana en Jalisco (si hay datos de trends)
+4. Una recomendacion de accion inmediata
 
 Se directo y accionable, como si fuera un resumen de WhatsApp para arrancar el dia."""
 
     try:
         r = client.messages.create(
             model="claude-sonnet-4-6",
-            max_tokens=400,
+            max_tokens=500,
             messages=[{"role": "user", "content": prompt}],
         )
         return r.content[0].text.strip()
@@ -304,6 +364,7 @@ def run():
     datos_crudos.extend(buscar_noticias_gdl())
     datos_crudos.extend(buscar_lugares_gdl())
     datos_crudos.extend(buscar_apollo_linkedin())
+    datos_crudos.extend(buscar_google_trends_gdl())
     datos_crudos.extend(buscar_twitter_simulado())
 
     log.info(f"Total registros crudos: {len(datos_crudos)}")
