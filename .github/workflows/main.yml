@@ -1,0 +1,49 @@
+name: Scout GDL — Scouting diario 7am
+
+on:
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+jobs:
+  scout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Instalar dependencias
+        run: pip install -r scout-gdl/requirements.txt
+
+      - name: Crear directorios
+        run: mkdir -p scout-gdl/output scout-gdl/logs
+
+      - name: Ejecutar agente de scouting
+        env:
+          ANTHROPIC_API_KEY:    ${{ secrets.ANTHROPIC_API_KEY }}
+          NEWSAPI_KEY:          ${{ secrets.NEWSAPI_KEY }}
+          GOOGLE_PLACES_KEY:    ${{ secrets.GOOGLE_PLACES_KEY }}
+          TWILIO_ACCOUNT_SID:   ${{ secrets.TWILIO_ACCOUNT_SID }}
+          TWILIO_AUTH_TOKEN:    ${{ secrets.TWILIO_AUTH_TOKEN }}
+          TWILIO_WHATSAPP_FROM: ${{ secrets.TWILIO_WHATSAPP_FROM }}
+          TU_WHATSAPP:          ${{ secrets.TU_WHATSAPP }}
+          RESEND_API_KEY:       ${{ secrets.RESEND_API_KEY }}
+          EMAIL_REMITENTE:      ${{ secrets.EMAIL_REMITENTE }}
+          EMAIL_DESTINO:        ${{ secrets.EMAIL_DESTINO }}
+        run: cd scout-gdl && python -c "from src.agent import run; run()"
+
+      - name: Subir resultados
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: scouting-gdl-${{ github.run_id }}
+          path: scout-gdl/output/
+          retention-days: 30
