@@ -199,8 +199,11 @@ def _html_email(briefing: str, prospectos: list, fecha: str) -> str:
       </div>
 
       <div style="margin-top:28px;padding-top:20px;border-top:1px solid #f0f0f0;font-size:12px;color:#aaa;text-align:center">
-        Scout GDL • Guadalajara Zona Metropolitana<br>
-        Generado automaticamente a las 7:00 AM
+       Scout GDL • Guadalajara Zona Metropolitana<br>
+       Generado automaticamente a las 7:00 AM<br><br>
+        <a href="https://monica2220.github.io/scout-gdl" style="background:#0f172a;color:white;padding:10px 20px;border-radius:8px;text-decoration:none;font-size:13px;font-weight:500">
+           Ver dashboard completo ↗
+        </a>
       </div>
     </div>
   </div>
