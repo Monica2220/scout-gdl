@@ -1,7 +1,6 @@
 """
-"""
-Scout GDL — Agente de scouting inmobiliario para Guadalajara ZMG
-Ejecución diaria automática a las 7:00 am
+Scout GDL - Agente de scouting inmobiliario para Guadalajara ZMG
+Ejecucion diaria automatica a las 7:00 am
 """
 
 import os
@@ -16,7 +15,6 @@ import requests
 from anthropic import Anthropic
 from src.notificaciones import notificar
 
-# ── Configuración ──────────────────────────────────────────────────────────────
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
@@ -28,36 +26,30 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 
 ANTHROPIC_API_KEY = os.environ["ANTHROPIC_API_KEY"]
-NEWSAPI_KEY       = os.environ.get("NEWSAPI_KEY", "")       # newsapi.org (gratis)
-GOOGLE_PLACES_KEY = os.environ.get("GOOGLE_PLACES_KEY", "") # Google Places API
-APOLLO_API_KEY    = os.environ.get("APOLLO_API_KEY", "")    # Apollo.io para LinkedIn
+NEWSAPI_KEY       = os.environ.get("NEWSAPI_KEY", "")
+GOOGLE_PLACES_KEY = os.environ.get("GOOGLE_PLACES_KEY", "")
+APOLLO_API_KEY    = os.environ.get("APOLLO_API_KEY", "")
 
 client = Anthropic(api_key=ANTHROPIC_API_KEY)
 
 ZONAS_ZMG = [
     "Guadalajara", "Zapopan", "Tlaquepaque",
-    "Tonalá", "Tlajomulco de Zúñiga", "El Salto", "Juanacatlán",
+    "Tonala", "Tlajomulco de Zuniga", "El Salto", "Juanacatlan",
 ]
 
 OUTPUT_DIR = Path("output")
 OUTPUT_DIR.mkdir(exist_ok=True)
 
 
-# ── 1. Fuentes de datos ────────────────────────────────────────────────────────
-
-def buscar_noticias_gdl() -> list[dict]:
-    """
-    Busca noticias recientes de desarrollo inmobiliario en GDL.
-    Usa NewsAPI (plan gratuito: 100 req/día).
-    """
+def buscar_noticias_gdl() -> list:
     if not NEWSAPI_KEY:
-        log.warning("NEWSAPI_KEY no configurada — omitiendo noticias")
+        log.warning("NEWSAPI_KEY no configurada - omitiendo noticias")
         return []
 
     resultados = []
     queries = [
         "desarrollo inmobiliario Guadalajara",
-        "inversión construcción Zapopan",
+        "inversion construccion Zapopan",
         "proyecto residencial Jalisco",
         "torre departamentos Guadalajara",
         "fraccionamiento Tlajomulco",
@@ -93,16 +85,12 @@ def buscar_noticias_gdl() -> list[dict]:
     return resultados
 
 
-def buscar_lugares_gdl() -> list[dict]:
-    """
-    Busca empresas inmobiliarias y constructoras en Google Places.
-    """
+def buscar_lugares_gdl() -> list:
     if not GOOGLE_PLACES_KEY:
-        log.warning("GOOGLE_PLACES_KEY no configurada — omitiendo Google Places")
+        log.warning("GOOGLE_PLACES_KEY no configurada - omitiendo Google Places")
         return []
 
     resultados = []
-    # Centro aproximado de GDL
     lat, lng = 20.6597, -103.3496
     tipos = [
         "real_estate_agency",
@@ -116,7 +104,7 @@ def buscar_lugares_gdl() -> list[dict]:
                 "https://maps.googleapis.com/maps/api/place/nearbysearch/json",
                 params={
                     "location": f"{lat},{lng}",
-                    "radius": 25000,   # 25 km cubre ZMG
+                    "radius": 25000,
                     "type": tipo,
                     "key": GOOGLE_PLACES_KEY,
                 },
@@ -128,7 +116,7 @@ def buscar_lugares_gdl() -> list[dict]:
                     "nombre": lugar.get("name", ""),
                     "direccion": lugar.get("vicinity", ""),
                     "rating": lugar.get("rating", 0),
-                    "reseñas": lugar.get("user_ratings_total", 0),
+                    "resenas": lugar.get("user_ratings_total", 0),
                     "place_id": lugar.get("place_id", ""),
                     "tipos": ", ".join(lugar.get("types", [])),
                 })
@@ -140,12 +128,7 @@ def buscar_lugares_gdl() -> list[dict]:
     return resultados
 
 
-def buscar_apollo_linkedin() -> list[dict]:
-    """
-    Busca contactos de empresas inmobiliarias en GDL usando Apollo.io.
-    Plan gratuito: 50 créditos/mes.
-    Retorna contactos con nombre, cargo, empresa y email estimado.
-    """
+def buscar_apollo_linkedin() -> list:
     if not APOLLO_API_KEY:
         log.warning("Apollo.io: falta APOLLO_API_KEY en .env")
         return []
@@ -197,35 +180,20 @@ def buscar_apollo_linkedin() -> list[dict]:
     return resultados
 
 
-def buscar_twitter_simulado() -> list[dict]:
-    """
-    Twitter/X API Básica tiene costo ($100/mes).
-    Alternativa gratuita: monitoreo de hashtags con nitter (instancia propia).
-    
-    Por ahora retorna estructura vacía lista para conectar.
-    Ver README para instrucciones.
-    """
-    log.info("Twitter/X: ver README para opciones de monitoreo")
+def buscar_twitter_simulado() -> list:
+    log.info("Twitter/X: pendiente de configurar")
     return []
 
 
-# ── 2. Scoring con IA ─────────────────────────────────────────────────────────
-
-def analizar_prospectos_con_ia(datos_crudos: list[dict]) -> list[dict]:
-    """
-    Envía los datos crudos a Claude para que:
-    1. Identifique empresas/personas como prospectos inmobiliarios
-    2. Asigne score de potencial (0-100)
-    3. Detecte la señal de intención de compra
-    4. Clasifique prioridad (hot/warm/cold)
-    """
+def analizar_prospectos_con_ia(datos_crudos: list) -> list:
     if not datos_crudos:
         log.warning("Sin datos crudos para analizar")
         return []
 
-    prompt = f"""Eres un agente especializado en scouting inmobiliario para la Zona Metropolitana de Guadalajara (ZMG), México.
+    fecha_hoy = datetime.now().strftime("%Y-%m-%d")
+    prompt = f"""Eres un agente especializado en scouting inmobiliario para la Zona Metropolitana de Guadalajara (ZMG), Mexico.
 
-Analiza estos datos crudos recopilados hoy de múltiples fuentes y extrae prospectos potenciales para servicios inmobiliarios (compra/venta de terrenos, desarrollos residenciales, proyectos comerciales, inversión inmobiliaria).
+Analiza estos datos crudos recopilados hoy de multiples fuentes y extrae prospectos potenciales para servicios inmobiliarios (compra/venta de terrenos, desarrollos residenciales, proyectos comerciales, inversion inmobiliaria).
 
 DATOS CRUDOS:
 {json.dumps(datos_crudos, ensure_ascii=False, indent=2)}
@@ -235,22 +203,22 @@ Para cada prospecto identificado, devuelve un JSON con esta estructura exacta:
   "prospectos": [
     {{
       "empresa": "nombre de la empresa",
-      "contacto": "nombre del contacto si está disponible, sino vacío",
+      "contacto": "nombre del contacto si esta disponible, sino vacio",
       "zona": "municipio dentro de ZMG",
       "fuente": "noticias|google_maps|linkedin|twitter",
       "score": 0-100,
       "prioridad": "hot|warm|cold",
-      "señal": "señal de intención detectada en máximo 80 caracteres",
+      "senal": "senal de intencion detectada en maximo 80 caracteres",
       "url": "url de la fuente si existe",
-      "fecha_deteccion": "{datetime.now().strftime('%Y-%m-%d')}"
+      "fecha_deteccion": "{fecha_hoy}"
     }}
   ]
 }}
 
 Criterios de scoring:
-- 80-100 (hot): señal clara de compra/inversión inmediata, expansion activa, búsqueda explícita de terrenos
+- 80-100 (hot): senal clara de compra/inversion inmediata, expansion activa, busqueda explicita de terrenos
 - 60-79 (warm): crecimiento visible, contrataciones clave, menciones en medios sobre proyectos futuros
-- 40-59 (cold): presencia relevante en el sector pero sin señal inmediata clara
+- 40-59 (cold): presencia relevante en el sector pero sin senal inmediata clara
 
 Devuelve SOLO el JSON, sin texto adicional."""
 
@@ -261,29 +229,26 @@ Devuelve SOLO el JSON, sin texto adicional."""
             messages=[{"role": "user", "content": prompt}],
         )
         texto = response.content[0].text.strip()
-        # Limpiar posibles backticks
         if texto.startswith("```"):
             texto = texto.split("```")[1]
             if texto.startswith("json"):
                 texto = texto[4:]
         resultado = json.loads(texto)
         prospectos = resultado.get("prospectos", [])
-        log.info(f"IA identificó {len(prospectos)} prospectos")
+        log.info(f"IA identifico {len(prospectos)} prospectos")
         return prospectos
     except Exception as e:
-        log.error(f"Error en análisis IA: {e}")
+        log.error(f"Error en analisis IA: {e}")
         return []
 
 
-# ── 3. Guardar resultados ─────────────────────────────────────────────────────
-
-def guardar_csv(prospectos: list[dict], fecha: str) -> Path:
+def guardar_csv(prospectos: list, fecha: str) -> Path:
     path = OUTPUT_DIR / f"scouting_GDL_{fecha}.csv"
     if not prospectos:
         log.warning("Sin prospectos para guardar")
         return path
 
-    campos = ["empresa","contacto","zona","fuente","score","prioridad","señal","url","fecha_deteccion"]
+    campos = ["empresa","contacto","zona","fuente","score","prioridad","senal","url","fecha_deteccion"]
     with open(path, "w", newline="", encoding="utf-8-sig") as f:
         w = csv.DictWriter(f, fieldnames=campos, extrasaction="ignore")
         w.writeheader()
@@ -293,7 +258,7 @@ def guardar_csv(prospectos: list[dict], fecha: str) -> Path:
     return path
 
 
-def guardar_json(prospectos: list[dict], fecha: str) -> Path:
+def guardar_json(prospectos: list, fecha: str) -> Path:
     path = OUTPUT_DIR / f"scouting_GDL_{fecha}.json"
     with open(path, "w", encoding="utf-8") as f:
         json.dump({"fecha": fecha, "total": len(prospectos), "prospectos": prospectos}, f, ensure_ascii=False, indent=2)
@@ -301,8 +266,7 @@ def guardar_json(prospectos: list[dict], fecha: str) -> Path:
     return path
 
 
-def generar_resumen_ia(prospectos: list[dict]) -> str:
-    """Genera un briefing ejecutivo de los mejores prospectos del día."""
+def generar_resumen_ia(prospectos: list) -> str:
     if not prospectos:
         return "Sin prospectos para resumir hoy."
 
@@ -310,15 +274,15 @@ def generar_resumen_ia(prospectos: list[dict]) -> str:
 
     prompt = f"""Eres mi asistente de ventas inmobiliarias en Guadalajara.
 
-Aquí están los mejores prospectos detectados hoy:
+Aqui estan los mejores prospectos detectados hoy:
 {json.dumps(top, ensure_ascii=False, indent=2)}
 
-Redacta un briefing ejecutivo en español (máximo 200 palabras) que incluya:
-1. Los 3 prospectos más calientes y por qué contactarlos HOY
-2. La zona más activa del día
-3. Una recomendación de acción inmediata
+Redacta un briefing ejecutivo en espanol (maximo 200 palabras) que incluya:
+1. Los 3 prospectos mas calientes y por que contactarlos HOY
+2. La zona mas activa del dia
+3. Una recomendacion de accion inmediata
 
-Sé directo y accionable, como si fuera un resumen de WhatsApp para arrancar el día."""
+Se directo y accionable, como si fuera un resumen de WhatsApp para arrancar el dia."""
 
     try:
         r = client.messages.create(
@@ -332,13 +296,10 @@ Sé directo y accionable, como si fuera un resumen de WhatsApp para arrancar el 
         return "Error generando resumen."
 
 
-# ── 4. Pipeline principal ─────────────────────────────────────────────────────
-
 def run():
     fecha = datetime.now().strftime("%Y-%m-%d")
-    log.info(f"═══ Scout GDL iniciando — {fecha} ═══")
+    log.info(f"Scout GDL iniciando - {fecha}")
 
-    # Recopilar datos de todas las fuentes
     datos_crudos = []
     datos_crudos.extend(buscar_noticias_gdl())
     datos_crudos.extend(buscar_lugares_gdl())
@@ -348,31 +309,22 @@ def run():
     log.info(f"Total registros crudos: {len(datos_crudos)}")
 
     if not datos_crudos:
-        log.warning("Sin datos crudos — verifica tus API keys en .env")
+        log.warning("Sin datos crudos - verifica tus API keys")
         return
 
-    # Analizar con IA
     prospectos = analizar_prospectos_con_ia(datos_crudos)
-
-    # Ordenar por score descendente
     prospectos.sort(key=lambda x: x.get("score", 0), reverse=True)
 
-    # Guardar resultados
     guardar_csv(prospectos, fecha)
     guardar_json(prospectos, fecha)
 
-    # Briefing del día
     resumen = generar_resumen_ia(prospectos)
     resumen_path = OUTPUT_DIR / f"briefing_{fecha}.txt"
     resumen_path.write_text(resumen, encoding="utf-8")
 
-    log.info("\n" + "─" * 50)
-    log.info("📋 BRIEFING DEL DÍA:")
-    log.info(resumen)
-    log.info("─" * 50)
-    log.info(f"✅ Scout GDL completado — {len(prospectos)} prospectos encontrados")
+    log.info(f"BRIEFING DEL DIA:\n{resumen}")
+    log.info(f"Scout GDL completado - {len(prospectos)} prospectos encontrados")
 
-    # Enviar notificaciones por WhatsApp y Email
     csv_path = OUTPUT_DIR / f"scouting_GDL_{fecha}.csv"
     notificar(resumen, prospectos, csv_path)
 
