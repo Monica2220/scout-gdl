@@ -1,0 +1,64 @@
+name: Scout GDL — Scouting diario 7am
+
+on:
+  schedule:
+    # 7:00 am hora de México (CDT = UTC-5) → 12:00 UTC
+    # En invierno CST = UTC-6 → cambia a 13:00 UTC
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+jobs:
+  scout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Crear directorios
+        run: mkdir -p output logs
+
+      - name: Ejecutar agente de scouting
+        env:
+          ANTHROPIC_API_KEY:       ${{ secrets.ANTHROPIC_API_KEY }}
+          NEWSAPI_KEY:             ${{ secrets.NEWSAPI_KEY }}
+          GOOGLE_PLACES_KEY:       ${{ secrets.GOOGLE_PLACES_KEY }}
+          TWILIO_ACCOUNT_SID:      ${{ secrets.TWILIO_ACCOUNT_SID }}
+          TWILIO_AUTH_TOKEN:       ${{ secrets.TWILIO_AUTH_TOKEN }}
+          TWILIO_WHATSAPP_FROM:    ${{ secrets.TWILIO_WHATSAPP_FROM }}
+          TU_WHATSAPP:             ${{ secrets.TU_WHATSAPP }}
+          RESEND_API_KEY:          ${{ secrets.RESEND_API_KEY }}
+          EMAIL_REMITENTE:         ${{ secrets.EMAIL_REMITENTE }}
+          EMAIL_DESTINO:           ${{ secrets.EMAIL_DESTINO }}
+          GMAIL_USER:              ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD:      ${{ secrets.GMAIL_APP_PASSWORD }}
+        run: python -c "from src.agent import run; run()"
+
+      - name: Subir CSV y briefing como artefactos
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: scouting-gdl-${{ github.run_id }}
+          path: |
+            output/
+            logs/
+          retention-days: 30
+
+      - name: Mostrar briefing en el log
+        run: |
+          FECHA=$(date +%Y-%m-%d)
+          if [ -f "output/briefing_${FECHA}.txt" ]; then
+            echo "════════════════════════════════════"
+            cat "output/briefing_${FECHA}.txt"
+            echo "════════════════════════════════════"
+          fi
