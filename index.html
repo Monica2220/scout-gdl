@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Scout GDL - 2026-06-27</title>
+  <title>Scout GDL - 2026-06-28</title>
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f8fafc;color:#1e293b}
@@ -48,7 +48,7 @@
 <div class="topbar">
   <div>
     <div class="topbar-title">🏗️ Scout GDL</div>
-    <div class="topbar-sub">Guadalajara · Zona Metropolitana · 2026-06-27</div>
+    <div class="topbar-sub">Guadalajara · Zona Metropolitana · 2026-06-28</div>
   </div>
   <div style="display:flex;gap:8px;flex-wrap:wrap">
     <button class="btn-top" onclick="descargarCSV()">⬇ Descargar CSV</button>
@@ -58,9 +58,9 @@
 </div>
 
 <div class="kpis">
-  <div class="kpi"><div class="kpi-val">18</div><div class="kpi-label">Prospectos hoy</div></div>
+  <div class="kpi"><div class="kpi-val">21</div><div class="kpi-label">Prospectos hoy</div></div>
   <div class="kpi"><div class="kpi-val" style="color:#dc2626">2</div><div class="kpi-label">Calientes 🔴</div></div>
-  <div class="kpi"><div class="kpi-val" style="color:#d97706">7</div><div class="kpi-label">Tibios 🟡</div></div>
+  <div class="kpi"><div class="kpi-val" style="color:#d97706">10</div><div class="kpi-label">Tibios 🟡</div></div>
   <div class="kpi"><div class="kpi-val" style="color:#2563eb">9</div><div class="kpi-label">Frios 🔵</div></div>
 </div>
 
@@ -68,7 +68,7 @@
   <div class="left">
 
     <div class="briefing-box" style="margin-top:4px">
-      <div id="briefing-texto" style="overflow:hidden;max-height:80px;transition:max-height .3s ease"> 📊 Briefing Ejecutivo — Prospectos GDL | 27 Jun 2026<br><br>---<br><br> 🔥 Top 3 Prospectos — Contactar HOY<br><br>1. <b>Inversión Inmobiliaria GDL<b> *(Score 100)* — Tendencia máxima en Jalisco. Hay inversores activos buscando oportunidades <b>ahora mismo<b>. Tiempo de respuesta = ventaja competitiva.<br><br>2. <b>Desarrollos Residenciales Jalisco<b> *(Score 80)* — Demanda regional fuerte y sostenida. Perfil ideal para presentar portafolio de proyectos en desarrollo.<br><br>3. <b>Alba Residencial<b> *(Score 78)* — Casi 2,000 reseñas en Zapopan/Nuevo México. Empresa con tracción real y visibilidad alta. Potencial de alianza o co-desarrollo.<br><br>---<br><br> 📍 Zona Más Activa<br><b>Zapopan<b> concentra 5 de 8 prospectos. Es el epicentro del día.<br><br>---<br><br> 🔎 Qué Busca la Gente en Google Esta Semana<br>Dos intenciones claras: <b>invertir en GDL<b> y <b>comprar casa en Tlajomulco<b>. Mercado activo en ambos segmentos: inversor y comprador final.<br><br>---<br><br> ⚡ Acción Inmediata<br><b>Llama antes de las 2pm<b> a Alba Residencial y MSG Inmobiliaria (Puerta de Hierro). Zapopan premium está caliente — quien llega primero, cierra primero.</div>
+      <div id="briefing-texto" style="overflow:hidden;max-height:80px;transition:max-height .3s ease"> 📊 Briefing Ejecutivo — Prospectos GDL | 28 Jun 2026<br><br>---<br><br> 🔥 Top 3 Prospectos — Contactar HOY<br><br><b>1. Guadalajara sede Mundial 2026 (Score: 85)<b><br>El boom mundialista está generando demanda explosiva de renta corta y larga. Posiciónate ahora antes de que el mercado se sature post-torneo.<br><br><b>2. Alba Residencial — Zapopan (Score: 82)<b><br>Casi 2,000 reseñas indican volumen real de operaciones. Desarrollador activo = necesidad inmediata de inventario, colocación o servicios complementarios.<br><br><b>3. GIG Desarrollos Inmobiliarios — Zapopan (Score: 78)<b><br>Operación continua en zona de alta demanda. 385 reseñas confirman tracción. Momento ideal para proponer alianza o cartera compartida.<br><br>---<br><br> 📍 Zona Más Activa<br><b>Zapopan<b> concentra 7 de 8 prospectos detectados. Foco total aquí.<br><br>---<br><br> 🔎 Tendencias Google Jalisco *(estimado contextual)*<br>"Renta temporal Guadalajara", "departamentos Mundial 2026", "inversión inmobiliaria Zapopan" — demanda impulsada por el torneo.<br><br>---<br><br> ⚡ Acción Inmediata<br><b>Llama hoy a Alba Residencial y GIG Desarrollos.<b> Propón una reunión esta semana enfocada en colocación de inventario mundialista. La ventana de oportunidad cierra en semanas.</div>
       <span class="briefing-toggle" onclick="toggleBriefing(this)">Ver completo ▼</span>
     </div>
 
@@ -92,43 +92,43 @@
     </div>
 
     <div class="cards" id="cards">
-        <div class="card" id="card-0" data-prioridad="hot" data-fuente="google_trends" data-zona="guadalajara" data-fecha="2026-06-27" data-texto="inversion inmobiliaria guadalajara guadalajara búsqueda máxima 100/100 en jalisco: inversores activos buscando oportunidades gdl">
+        <div class="card" id="card-0" data-prioridad="hot" data-fuente="noticias" data-zona="guadalajara" data-fecha="2026-06-28" data-texto="guadalajara sede mundial 2026 guadalajara gdl sede mundialista activa; boom hotelero y demanda de renta corta/larga generada">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
-            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">inversion inmobiliaria Guadalajara</span></div>
-            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#fef2f2;color:#dc2626">100</div>
+            <div style="flex:1;min-width:0"><a href="https://www.elfinanciero.com.mx/opinion/jeanette-leyva/2026/06/16/cdmx-guadalajara-y-monterrey-quien-ha-tenido-el-mejor-mundial/" target="_blank" style="color:#185FA5;text-decoration:none;font-size:14px;font-weight:500;word-break:break-word">Guadalajara sede Mundial 2026 ↗</a></div>
+            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#fef2f2;color:#dc2626">85</div>
           </div>
           <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
             <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Guadalajara</span>
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">🔍 Google Trends</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📰 Noticias</span>
             <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#fef2f2;color:#dc2626">Caliente</span>
           </div>
-          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-0">Búsqueda máxima 100/100 en Jalisco: inversores activos buscando oportunidades GDL</div>
-          
+          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-0">GDL sede mundialista activa; boom hotelero y demanda de renta corta/larga generada</div>
+          <div style="margin-bottom:8px"><a href="https://www.elfinanciero.com.mx/opinion/jeanette-leyva/2026/06/16/cdmx-guadalajara-y-monterrey-quien-ha-tenido-el-mejor-mundial/" target="_blank" style="font-size:11px;color:#185FA5;text-decoration:none;padding:3px 8px;border:1px solid #bfdbfe;border-radius:4px;background:#eff6ff;margin-right:4px">Ver fuente ↗</a></div>
           <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
             <button onclick="marcarRevisado(0)" id="btn-rev-0" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
-            <span style="font-size:11px;color:#94a3b8">2026-06-27</span>
+            <span style="font-size:11px;color:#94a3b8">2026-06-28</span>
           </div>
         </div>
-        <div class="card" id="card-1" data-prioridad="hot" data-fuente="google_trends" data-zona="jalisco" data-fecha="2026-06-27" data-texto="desarrollos residenciales jalisco jalisco interés 80/100 en jalisco: demanda activa de desarrollos residenciales en la región">
+        <div class="card" id="card-1" data-prioridad="hot" data-fuente="google_maps" data-zona="zapopan" data-fecha="2026-06-28" data-texto="alba residencial zapopan desarrollador activo con 1,948 reseñas, alta visibilidad y volumen de operaciones">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
-            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">desarrollos residenciales Jalisco</span></div>
-            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#fef2f2;color:#dc2626">80</div>
+            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">Alba Residencial</span></div>
+            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#fef2f2;color:#dc2626">82</div>
           </div>
           <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Jalisco</span>
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">🔍 Google Trends</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Zapopan</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
             <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#fef2f2;color:#dc2626">Caliente</span>
           </div>
-          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-1">Interés 80/100 en Jalisco: demanda activa de desarrollos residenciales en la región</div>
+          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-1">Desarrollador activo con 1,948 reseñas, alta visibilidad y volumen de operaciones</div>
           
           <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
             <button onclick="marcarRevisado(1)" id="btn-rev-1" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
-            <span style="font-size:11px;color:#94a3b8">2026-06-27</span>
+            <span style="font-size:11px;color:#94a3b8">2026-06-28</span>
           </div>
         </div>
-        <div class="card" id="card-2" data-prioridad="warm" data-fuente="google_maps" data-zona="zapopan" data-fecha="2026-06-27" data-texto="alba residencial zapopan 1,948 reseñas, alta visibilidad; desarrollo activo en zona de alto crecimiento nuevo méxico">
+        <div class="card" id="card-2" data-prioridad="warm" data-fuente="google_maps" data-zona="zapopan" data-fecha="2026-06-28" data-texto="gig desarrollos inmobiliarios zapopan 385 reseñas, desarrollador con operación continua en zona de alta demanda">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
-            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">Alba Residencial</span></div>
+            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">GIG Desarrollos Inmobiliarios</span></div>
             <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#fffbeb;color:#d97706">78</div>
           </div>
           <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
@@ -136,50 +136,152 @@
             <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
             <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#fffbeb;color:#d97706">Tibio</span>
           </div>
-          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-2">1,948 reseñas, alta visibilidad; desarrollo activo en zona de alto crecimiento Nuevo México</div>
+          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-2">385 reseñas, desarrollador con operación continua en zona de alta demanda</div>
           
           <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
             <button onclick="marcarRevisado(2)" id="btn-rev-2" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
-            <span style="font-size:11px;color:#94a3b8">2026-06-27</span>
+            <span style="font-size:11px;color:#94a3b8">2026-06-28</span>
           </div>
         </div>
-        <div class="card" id="card-3" data-prioridad="warm" data-fuente="google_trends" data-zona="tlajomulco de zúñiga" data-fecha="2026-06-27" data-texto="casas tlajomulco tlajomulco de zúñiga interés 52/100 en jalisco: compradores buscando vivienda activamente en tlajomulco">
+        <div class="card" id="card-3" data-prioridad="warm" data-fuente="google_maps" data-zona="zapopan" data-fecha="2026-06-28" data-texto="hotel suites internacional zapopan hotel-inmobiliaria con 277 reseñas; modelo mixto indica necesidad de gestión de activos">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
-            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">casas Tlajomulco</span></div>
-            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#fffbeb;color:#d97706">65</div>
-          </div>
-          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Tlajomulco de Zúñiga</span>
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">🔍 Google Trends</span>
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#fffbeb;color:#d97706">Tibio</span>
-          </div>
-          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-3">Interés 52/100 en Jalisco: compradores buscando vivienda activamente en Tlajomulco</div>
-          
-          <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
-            <button onclick="marcarRevisado(3)" id="btn-rev-3" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
-            <span style="font-size:11px;color:#94a3b8">2026-06-27</span>
-          </div>
-        </div>
-        <div class="card" id="card-4" data-prioridad="warm" data-fuente="google_maps" data-zona="zapopan" data-fecha="2026-06-27" data-texto="gig desarrollos inmobiliarios zapopan 385 reseñas en zapopan; desarrolladora con volumen significativo de operaciones activas">
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
-            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">GIG Desarrollos Inmobiliarios</span></div>
-            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#fffbeb;color:#d97706">62</div>
+            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">Hotel Suites Internacional</span></div>
+            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#fffbeb;color:#d97706">75</div>
           </div>
           <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
             <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Zapopan</span>
             <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
             <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#fffbeb;color:#d97706">Tibio</span>
           </div>
-          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-4">385 reseñas en Zapopan; desarrolladora con volumen significativo de operaciones activas</div>
+          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-3">Hotel-inmobiliaria con 277 reseñas; modelo mixto indica necesidad de gestión de activos</div>
+          
+          <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
+            <button onclick="marcarRevisado(3)" id="btn-rev-3" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
+            <span style="font-size:11px;color:#94a3b8">2026-06-28</span>
+          </div>
+        </div>
+        <div class="card" id="card-4" data-prioridad="warm" data-fuente="google_maps" data-zona="zapopan" data-fecha="2026-06-28" data-texto="msg inmobiliaria zapopan rating 4.6 con 31 reseñas en puerta de hierro, zona premium con alta rotación">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
+            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">MSG inmobiliaria</span></div>
+            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#fffbeb;color:#d97706">74</div>
+          </div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Zapopan</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#fffbeb;color:#d97706">Tibio</span>
+          </div>
+          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-4">Rating 4.6 con 31 reseñas en Puerta de Hierro, zona premium con alta rotación</div>
           
           <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
             <button onclick="marcarRevisado(4)" id="btn-rev-4" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
-            <span style="font-size:11px;color:#94a3b8">2026-06-27</span>
+            <span style="font-size:11px;color:#94a3b8">2026-06-28</span>
           </div>
         </div>
-        <div class="card" id="card-5" data-prioridad="warm" data-fuente="google_maps" data-zona="zapopan" data-fecha="2026-06-27" data-texto="msg inmobiliaria zapopan rating 4.6 con oficina en puerta de hierro; zona premium con alta demanda de inversión">
+        <div class="card" id="card-5" data-prioridad="warm" data-fuente="google_maps" data-zona="zapopan" data-fecha="2026-06-28" data-texto="casactiva inmobiliaria zapopan rating perfecto 5.0 en andares/puerta de hierro, oficina ios indica expansión reciente">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
-            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">MSG inmobiliaria</span></div>
+            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">Casactiva Inmobiliaria</span></div>
+            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#fffbeb;color:#d97706">72</div>
+          </div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Zapopan</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#fffbeb;color:#d97706">Tibio</span>
+          </div>
+          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-5">Rating perfecto 5.0 en Andares/Puerta de Hierro, oficina IOS indica expansión reciente</div>
+          
+          <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
+            <button onclick="marcarRevisado(5)" id="btn-rev-5" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
+            <span style="font-size:11px;color:#94a3b8">2026-06-28</span>
+          </div>
+        </div>
+        <div class="card" id="card-6" data-prioridad="warm" data-fuente="google_maps" data-zona="zapopan" data-fecha="2026-06-28" data-texto="pais a.c. zapopan rating 4.7 con 62 reseñas en ciudad del sol, organización activa con credibilidad alta">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
+            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">PAIS A.C.</span></div>
+            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#fffbeb;color:#d97706">71</div>
+          </div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Zapopan</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#fffbeb;color:#d97706">Tibio</span>
+          </div>
+          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-6">Rating 4.7 con 62 reseñas en Ciudad del Sol, organización activa con credibilidad alta</div>
+          
+          <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
+            <button onclick="marcarRevisado(6)" id="btn-rev-6" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
+            <span style="font-size:11px;color:#94a3b8">2026-06-28</span>
+          </div>
+        </div>
+        <div class="card" id="card-7" data-prioridad="warm" data-fuente="google_maps" data-zona="zapopan" data-fecha="2026-06-28" data-texto="estinver | bienes raíces zapopan rating 4.3 con 46 reseñas, enfoque en inversión inmobiliaria en jardines de guadalupe">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
+            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">Estinver | Bienes Raíces</span></div>
+            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#fffbeb;color:#d97706">68</div>
+          </div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Zapopan</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#fffbeb;color:#d97706">Tibio</span>
+          </div>
+          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-7">Rating 4.3 con 46 reseñas, enfoque en inversión inmobiliaria en Jardines de Guadalupe</div>
+          
+          <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
+            <button onclick="marcarRevisado(7)" id="btn-rev-7" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
+            <span style="font-size:11px;color:#94a3b8">2026-06-28</span>
+          </div>
+        </div>
+        <div class="card" id="card-8" data-prioridad="warm" data-fuente="google_maps" data-zona="guadalajara" data-fecha="2026-06-28" data-texto="young world guadalajara 183 reseñas, perfil mixto travel+inmobiliaria sobre vallarta indica oportunidad relocation">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
+            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">Young World</span></div>
+            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#fffbeb;color:#d97706">65</div>
+          </div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Guadalajara</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#fffbeb;color:#d97706">Tibio</span>
+          </div>
+          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-8">183 reseñas, perfil mixto travel+inmobiliaria sobre Vallarta indica oportunidad relocation</div>
+          
+          <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
+            <button onclick="marcarRevisado(8)" id="btn-rev-8" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
+            <span style="font-size:11px;color:#94a3b8">2026-06-28</span>
+          </div>
+        </div>
+        <div class="card" id="card-9" data-prioridad="warm" data-fuente="google_maps" data-zona="guadalajara" data-fecha="2026-06-28" data-texto="bienes raíces laiz guadalajara rating 4.2 con 25 reseñas en zona monraz, presencia activa en corredor comercial">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
+            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">Bienes Raíces Laiz</span></div>
+            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#fffbeb;color:#d97706">62</div>
+          </div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Guadalajara</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#fffbeb;color:#d97706">Tibio</span>
+          </div>
+          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-9">Rating 4.2 con 25 reseñas en zona Monraz, presencia activa en corredor comercial</div>
+          
+          <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
+            <button onclick="marcarRevisado(9)" id="btn-rev-9" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
+            <span style="font-size:11px;color:#94a3b8">2026-06-28</span>
+          </div>
+        </div>
+        <div class="card" id="card-10" data-prioridad="warm" data-fuente="google_maps" data-zona="zapopan" data-fecha="2026-06-28" data-texto="the mandarinos residential zapopan 67 reseñas en jardines del valle, desarrollo residencial con flujo constante de clientes">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
+            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">The Mandarinos Residential</span></div>
+            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#fffbeb;color:#d97706">61</div>
+          </div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Zapopan</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#fffbeb;color:#d97706">Tibio</span>
+          </div>
+          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-10">67 reseñas en Jardines del Valle, desarrollo residencial con flujo constante de clientes</div>
+          
+          <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
+            <button onclick="marcarRevisado(10)" id="btn-rev-10" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
+            <span style="font-size:11px;color:#94a3b8">2026-06-28</span>
+          </div>
+        </div>
+        <div class="card" id="card-11" data-prioridad="warm" data-fuente="google_maps" data-zona="zapopan" data-fecha="2026-06-28" data-texto="regus guadalajara zapopan operador de oficinas flex en plaza del sol; demanda de espacios comerciales post-mundial">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
+            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">Regus Guadalajara</span></div>
             <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#fffbeb;color:#d97706">60</div>
           </div>
           <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
@@ -187,152 +289,118 @@
             <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
             <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#fffbeb;color:#d97706">Tibio</span>
           </div>
-          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-5">Rating 4.6 con oficina en Puerta de Hierro; zona premium con alta demanda de inversión</div>
-          
-          <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
-            <button onclick="marcarRevisado(5)" id="btn-rev-5" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
-            <span style="font-size:11px;color:#94a3b8">2026-06-27</span>
-          </div>
-        </div>
-        <div class="card" id="card-6" data-prioridad="warm" data-fuente="google_maps" data-zona="zapopan" data-fecha="2026-06-27" data-texto="pais a.c. zapopan rating 4.7 en ciudad del sol zapopan; agencia con alta reputación en zona de demanda">
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
-            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">PAIS A.C.</span></div>
-            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#fffbeb;color:#d97706">58</div>
-          </div>
-          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Zapopan</span>
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#fffbeb;color:#d97706">Tibio</span>
-          </div>
-          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-6">Rating 4.7 en Ciudad del Sol Zapopan; agencia con alta reputación en zona de demanda</div>
-          
-          <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
-            <button onclick="marcarRevisado(6)" id="btn-rev-6" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
-            <span style="font-size:11px;color:#94a3b8">2026-06-27</span>
-          </div>
-        </div>
-        <div class="card" id="card-7" data-prioridad="warm" data-fuente="google_maps" data-zona="zapopan" data-fecha="2026-06-27" data-texto="estinver | bienes raíces zapopan rating 4.3, 46 reseñas en jardines de guadalupe; agencia activa en zona residencial">
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
-            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">Estinver | Bienes Raíces</span></div>
-            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#fffbeb;color:#d97706">55</div>
-          </div>
-          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Zapopan</span>
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#fffbeb;color:#d97706">Tibio</span>
-          </div>
-          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-7">Rating 4.3, 46 reseñas en Jardines de Guadalupe; agencia activa en zona residencial</div>
-          
-          <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
-            <button onclick="marcarRevisado(7)" id="btn-rev-7" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
-            <span style="font-size:11px;color:#94a3b8">2026-06-27</span>
-          </div>
-        </div>
-        <div class="card" id="card-8" data-prioridad="warm" data-fuente="google_maps" data-zona="zapopan" data-fecha="2026-06-27" data-texto="casactiva inmobiliaria zapopan rating 5.0 en puerta de hierro/andares; nicho premium con potencial de co-brokeraje">
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
-            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">Casactiva Inmobiliaria</span></div>
-            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#fffbeb;color:#d97706">52</div>
-          </div>
-          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Zapopan</span>
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#fffbeb;color:#d97706">Tibio</span>
-          </div>
-          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-8">Rating 5.0 en Puerta de Hierro/Andares; nicho premium con potencial de co-brokeraje</div>
-          
-          <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
-            <button onclick="marcarRevisado(8)" id="btn-rev-8" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
-            <span style="font-size:11px;color:#94a3b8">2026-06-27</span>
-          </div>
-        </div>
-        <div class="card" id="card-9" data-prioridad="cold" data-fuente="google_maps" data-zona="zapopan" data-fecha="2026-06-27" data-texto="the mandarinos residential zapopan 67 reseñas en jardines del valle; desarrollo residencial con presencia en zona de expansión">
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
-            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">The Mandarinos Residential</span></div>
-            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#eff6ff;color:#2563eb">50</div>
-          </div>
-          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Zapopan</span>
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#eff6ff;color:#2563eb">Frio</span>
-          </div>
-          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-9">67 reseñas en Jardines del Valle; desarrollo residencial con presencia en zona de expansión</div>
-          
-          <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
-            <button onclick="marcarRevisado(9)" id="btn-rev-9" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
-            <span style="font-size:11px;color:#94a3b8">2026-06-27</span>
-          </div>
-        </div>
-        <div class="card" id="card-10" data-prioridad="cold" data-fuente="google_maps" data-zona="zapopan" data-fecha="2026-06-27" data-texto="hotel suites internacional zapopan clasificado como real_estate_agency + lodging; inmueble con potencial de reconversión/venta">
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
-            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">Hotel Suites Internacional</span></div>
-            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#eff6ff;color:#2563eb">50</div>
-          </div>
-          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Zapopan</span>
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#eff6ff;color:#2563eb">Frio</span>
-          </div>
-          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-10">Clasificado como real_estate_agency + lodging; inmueble con potencial de reconversión/venta</div>
-          
-          <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
-            <button onclick="marcarRevisado(10)" id="btn-rev-10" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
-            <span style="font-size:11px;color:#94a3b8">2026-06-27</span>
-          </div>
-        </div>
-        <div class="card" id="card-11" data-prioridad="cold" data-fuente="google_maps" data-zona="guadalajara" data-fecha="2026-06-27" data-texto="bienes raíces laiz guadalajara agencia en zona monraz/plaza bonita; presencia activa en corredor comercial consolidado">
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
-            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">Bienes Raíces Laiz</span></div>
-            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#eff6ff;color:#2563eb">48</div>
-          </div>
-          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Guadalajara</span>
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#eff6ff;color:#2563eb">Frio</span>
-          </div>
-          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-11">Agencia en zona Monraz/Plaza Bonita; presencia activa en corredor comercial consolidado</div>
+          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-11">Operador de oficinas flex en Plaza del Sol; demanda de espacios comerciales post-Mundial</div>
           
           <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
             <button onclick="marcarRevisado(11)" id="btn-rev-11" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
-            <span style="font-size:11px;color:#94a3b8">2026-06-27</span>
+            <span style="font-size:11px;color:#94a3b8">2026-06-28</span>
           </div>
         </div>
-        <div class="card" id="card-12" data-prioridad="cold" data-fuente="google_maps" data-zona="guadalajara" data-fecha="2026-06-27" data-texto="avaluos y arquitectura guadalajara rating 5.0, servicios de avalúo activos; señal de transacciones en curso en la calma gdl">
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
-            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">Avaluos y Arquitectura</span></div>
-            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#eff6ff;color:#2563eb">47</div>
-          </div>
-          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Guadalajara</span>
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#eff6ff;color:#2563eb">Frio</span>
-          </div>
-          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-12">Rating 5.0, servicios de avalúo activos; señal de transacciones en curso en La Calma GDL</div>
-          
-          <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
-            <button onclick="marcarRevisado(12)" id="btn-rev-12" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
-            <span style="font-size:11px;color:#94a3b8">2026-06-27</span>
-          </div>
-        </div>
-        <div class="card" id="card-13" data-prioridad="cold" data-fuente="google_maps" data-zona="zapopan" data-fecha="2026-06-27" data-texto="administración colomos patria zapopan administración de propiedades en corredor colomos-patria; zona de alta plusvalía zapopan">
+        <div class="card" id="card-12" data-prioridad="cold" data-fuente="google_maps" data-zona="zapopan" data-fecha="2026-06-28" data-texto="administración colomos patria zapopan administradora de inmuebles con 19 reseñas en zona colomos, nicho de administración activo">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
             <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">Administración Colomos Patria</span></div>
-            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#eff6ff;color:#2563eb">45</div>
+            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#eff6ff;color:#2563eb">58</div>
           </div>
           <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
             <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Zapopan</span>
             <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
             <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#eff6ff;color:#2563eb">Frio</span>
           </div>
-          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-13">Administración de propiedades en corredor Colomos-Patria; zona de alta plusvalía Zapopan</div>
+          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-12">Administradora de inmuebles con 19 reseñas en zona Colomos, nicho de administración activo</div>
+          
+          <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
+            <button onclick="marcarRevisado(12)" id="btn-rev-12" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
+            <span style="font-size:11px;color:#94a3b8">2026-06-28</span>
+          </div>
+        </div>
+        <div class="card" id="card-13" data-prioridad="cold" data-fuente="google_maps" data-zona="guadalajara" data-fecha="2026-06-28" data-texto="avaluos y arquitectura guadalajara rating 5.0 en avalúos, servicio complementario clave en mercado activo post-mundial">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
+            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">Avaluos y Arquitectura</span></div>
+            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#eff6ff;color:#2563eb">55</div>
+          </div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Guadalajara</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#eff6ff;color:#2563eb">Frio</span>
+          </div>
+          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-13">Rating 5.0 en avalúos, servicio complementario clave en mercado activo post-Mundial</div>
           
           <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
             <button onclick="marcarRevisado(13)" id="btn-rev-13" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
-            <span style="font-size:11px;color:#94a3b8">2026-06-27</span>
+            <span style="font-size:11px;color:#94a3b8">2026-06-28</span>
           </div>
         </div>
-        <div class="card" id="card-14" data-prioridad="cold" data-fuente="google_maps" data-zona="guadalajara" data-fecha="2026-06-27" data-texto="espacio inmobiliario gdl guadalajara agencia en providencia; zona prime gdl con demanda sostenida de renta y compraventa">
+        <div class="card" id="card-14" data-prioridad="cold" data-fuente="google_maps" data-zona="guadalajara" data-fecha="2026-06-28" data-texto="súper renta guadalajara 49 reseñas en jardines del bosque, enfocado en rentas con oportunidad de captación">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
+            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">Súper Renta</span></div>
+            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#eff6ff;color:#2563eb">54</div>
+          </div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Guadalajara</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#eff6ff;color:#2563eb">Frio</span>
+          </div>
+          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-14">49 reseñas en Jardines del Bosque, enfocado en rentas con oportunidad de captación</div>
+          
+          <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
+            <button onclick="marcarRevisado(14)" id="btn-rev-14" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
+            <span style="font-size:11px;color:#94a3b8">2026-06-28</span>
+          </div>
+        </div>
+        <div class="card" id="card-15" data-prioridad="cold" data-fuente="google_maps" data-zona="guadalajara" data-fecha="2026-06-28" data-texto="espacio inmobiliario gdl guadalajara ubicado en providencia con 16 reseñas, zona premium con potencial de colaboración">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
             <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">ESPACIO Inmobiliario GDL</span></div>
+            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#eff6ff;color:#2563eb">52</div>
+          </div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Guadalajara</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#eff6ff;color:#2563eb">Frio</span>
+          </div>
+          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-15">Ubicado en Providencia con 16 reseñas, zona premium con potencial de colaboración</div>
+          
+          <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
+            <button onclick="marcarRevisado(15)" id="btn-rev-15" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
+            <span style="font-size:11px;color:#94a3b8">2026-06-28</span>
+          </div>
+        </div>
+        <div class="card" id="card-16" data-prioridad="cold" data-fuente="google_maps" data-zona="zapopan" data-fecha="2026-06-28" data-texto="real patria tierra y armonía zapopan inmobiliaria en atemajac del valle con presencia modesta, zona en desarrollo">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
+            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">Real Patria Tierra y Armonía</span></div>
+            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#eff6ff;color:#2563eb">48</div>
+          </div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Zapopan</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#eff6ff;color:#2563eb">Frio</span>
+          </div>
+          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-16">Inmobiliaria en Atemajac del Valle con presencia modesta, zona en desarrollo</div>
+          
+          <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
+            <button onclick="marcarRevisado(16)" id="btn-rev-16" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
+            <span style="font-size:11px;color:#94a3b8">2026-06-28</span>
+          </div>
+        </div>
+        <div class="card" id="card-17" data-prioridad="cold" data-fuente="google_maps" data-zona="guadalajara" data-fecha="2026-06-28" data-texto="vica inmobiliaria guadalajara ubicada en providencia 4a sección, bajo volumen de reseñas indica cartera en construcción">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
+            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">Vica Inmobiliaria</span></div>
+            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#eff6ff;color:#2563eb">45</div>
+          </div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Guadalajara</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#eff6ff;color:#2563eb">Frio</span>
+          </div>
+          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-17">Ubicada en Providencia 4a Sección, bajo volumen de reseñas indica cartera en construcción</div>
+          
+          <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
+            <button onclick="marcarRevisado(17)" id="btn-rev-17" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
+            <span style="font-size:11px;color:#94a3b8">2026-06-28</span>
+          </div>
+        </div>
+        <div class="card" id="card-18" data-prioridad="cold" data-fuente="google_maps" data-zona="guadalajara" data-fecha="2026-06-28" data-texto="guía inmobiliaria casas y terrenos guadalajara portal de guía inmobiliaria con mínimas reseñas, potencial como canal de difusión">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
+            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">Guía Inmobiliaria Casas y Terrenos</span></div>
             <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#eff6ff;color:#2563eb">44</div>
           </div>
           <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
@@ -340,62 +408,45 @@
             <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
             <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#eff6ff;color:#2563eb">Frio</span>
           </div>
-          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-14">Agencia en Providencia; zona prime GDL con demanda sostenida de renta y compraventa</div>
+          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-18">Portal de guía inmobiliaria con mínimas reseñas, potencial como canal de difusión</div>
           
           <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
-            <button onclick="marcarRevisado(14)" id="btn-rev-14" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
-            <span style="font-size:11px;color:#94a3b8">2026-06-27</span>
+            <button onclick="marcarRevisado(18)" id="btn-rev-18" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
+            <span style="font-size:11px;color:#94a3b8">2026-06-28</span>
           </div>
         </div>
-        <div class="card" id="card-15" data-prioridad="cold" data-fuente="google_maps" data-zona="guadalajara" data-fecha="2026-06-27" data-texto="vica inmobiliaria guadalajara ubicada en providencia 4a sección; zona premium con pocas reseñas, oportunidad de acercamiento">
+        <div class="card" id="card-19" data-prioridad="cold" data-fuente="google_maps" data-zona="zapopan" data-fecha="2026-06-28" data-texto="abasto inmobiliario zapopan inmobiliaria en paraísos del colli con rating bajo, oportunidad de mejora de servicio">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
-            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">Vica Inmobiliaria</span></div>
+            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">Abasto Inmobiliario</span></div>
             <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#eff6ff;color:#2563eb">42</div>
-          </div>
-          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Guadalajara</span>
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#eff6ff;color:#2563eb">Frio</span>
-          </div>
-          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-15">Ubicada en Providencia 4a Sección; zona premium con pocas reseñas, oportunidad de acercamiento</div>
-          
-          <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
-            <button onclick="marcarRevisado(15)" id="btn-rev-15" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
-            <span style="font-size:11px;color:#94a3b8">2026-06-27</span>
-          </div>
-        </div>
-        <div class="card" id="card-16" data-prioridad="cold" data-fuente="google_maps" data-zona="guadalajara" data-fecha="2026-06-27" data-texto="súper renta guadalajara agencia de rentas en jardines del bosque; mercado de arrendamiento activo en la zona">
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
-            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">Súper Renta</span></div>
-            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#eff6ff;color:#2563eb">41</div>
-          </div>
-          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Guadalajara</span>
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
-            <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#eff6ff;color:#2563eb">Frio</span>
-          </div>
-          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-16">Agencia de rentas en Jardines del Bosque; mercado de arrendamiento activo en la zona</div>
-          
-          <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
-            <button onclick="marcarRevisado(16)" id="btn-rev-16" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
-            <span style="font-size:11px;color:#94a3b8">2026-06-27</span>
-          </div>
-        </div>
-        <div class="card" id="card-17" data-prioridad="cold" data-fuente="google_maps" data-zona="zapopan" data-fecha="2026-06-27" data-texto="real patria tierra y armonía zapopan agencia en atemajac del valle zapopan; zona en desarrollo con potencial de terrenos">
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
-            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">Real Patria Tierra y Armonía</span></div>
-            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#eff6ff;color:#2563eb">40</div>
           </div>
           <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
             <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Zapopan</span>
             <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
             <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#eff6ff;color:#2563eb">Frio</span>
           </div>
-          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-17">Agencia en Atemajac del Valle Zapopan; zona en desarrollo con potencial de terrenos</div>
+          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-19">Inmobiliaria en Paraísos del Colli con rating bajo, oportunidad de mejora de servicio</div>
           
           <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
-            <button onclick="marcarRevisado(17)" id="btn-rev-17" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
-            <span style="font-size:11px;color:#94a3b8">2026-06-27</span>
+            <button onclick="marcarRevisado(19)" id="btn-rev-19" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
+            <span style="font-size:11px;color:#94a3b8">2026-06-28</span>
+          </div>
+        </div>
+        <div class="card" id="card-20" data-prioridad="cold" data-fuente="google_maps" data-zona="guadalajara" data-fecha="2026-06-28" data-texto="inmobiliaria poa guadalajara inmobiliaria en ladrón de guevara con presencia mínima, potencial de reactivación">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px">
+            <div style="flex:1;min-width:0"><span style="font-size:14px;font-weight:500;color:#0f172a;word-break:break-word">Inmobiliaria Poa</span></div>
+            <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;background:#eff6ff;color:#2563eb">40</div>
+          </div>
+          <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Guadalajara</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;background:#f1f5f9;color:#475569">📍 Google Maps</span>
+            <span style="font-size:11px;padding:2px 7px;border-radius:4px;font-weight:600;background:#eff6ff;color:#2563eb">Frio</span>
+          </div>
+          <div style="font-size:12px;color:#64748b;line-height:1.6;margin-bottom:8px" id="senal-20">Inmobiliaria en Ladrón de Guevara con presencia mínima, potencial de reactivación</div>
+          
+          <div style="padding-top:8px;border-top:1px solid #f1f5f9;display:flex;justify-content:space-between;align-items:center">
+            <button onclick="marcarRevisado(20)" id="btn-rev-20" style="font-size:11px;padding:3px 9px;border:1px solid #e2e8f0;border-radius:5px;background:white;color:#475569;cursor:pointer">⬜ Por revisar</button>
+            <span style="font-size:11px;color:#94a3b8">2026-06-28</span>
           </div>
         </div></div>
     <div class="empty" id="empty">Sin resultados para este filtro</div>
@@ -404,17 +455,17 @@
 
   <div class="right">
     <div class="sec">Google Trends — Jalisco</div>
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #f1f5f9"><span style="font-size:12px;font-weight:500;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">inversion inmobiliaria Guadalajara</span><div style="width:70px;height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden"><div style="width:100%;height:100%;background:#dc2626;border-radius:3px"></div></div><span style="font-size:12px;color:#64748b;width:28px;text-align:right">100</span><span style="font-size:12px;color:#16a34a">↑</span></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #f1f5f9"><span style="font-size:12px;font-weight:500;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">desarrollos residenciales Jalisco</span><div style="width:70px;height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden"><div style="width:80%;height:100%;background:#dc2626;border-radius:3px"></div></div><span style="font-size:12px;color:#64748b;width:28px;text-align:right">80</span><span style="font-size:12px;color:#16a34a">↑</span></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #f1f5f9"><span style="font-size:12px;font-weight:500;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">casas Tlajomulco</span><div style="width:70px;height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden"><div style="width:65%;height:100%;background:#d97706;border-radius:3px"></div></div><span style="font-size:12px;color:#64748b;width:28px;text-align:right">65</span><span style="font-size:12px;color:#16a34a">↑</span></div>
+    <p style="font-size:12px;color:#94a3b8">Sin datos de tendencias hoy</p>
     <div class="divider"></div>
     <div class="sec">Prospectos por zona</div>
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px"><span style="font-size:12px;color:#475569;width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Zapopan</span><div style="flex:1;height:7px;background:#f1f5f9;border-radius:4px;overflow:hidden"><div style="width:100%;height:100%;background:#185FA5;border-radius:4px"></div></div><span style="font-size:12px;color:#64748b;width:18px;text-align:right">10</span></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:7px"><span style="font-size:12px;color:#475569;width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Guadalajara</span><div style="flex:1;height:7px;background:#f1f5f9;border-radius:4px;overflow:hidden"><div style="width:60%;height:100%;background:#185FA5;border-radius:4px"></div></div><span style="font-size:12px;color:#64748b;width:18px;text-align:right">6</span></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:7px"><span style="font-size:12px;color:#475569;width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Jalisco</span><div style="flex:1;height:7px;background:#f1f5f9;border-radius:4px;overflow:hidden"><div style="width:10%;height:100%;background:#185FA5;border-radius:4px"></div></div><span style="font-size:12px;color:#64748b;width:18px;text-align:right">1</span></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:7px"><span style="font-size:12px;color:#475569;width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Tlajomulco de Zúñiga</span><div style="flex:1;height:7px;background:#f1f5f9;border-radius:4px;overflow:hidden"><div style="width:10%;height:100%;background:#185FA5;border-radius:4px"></div></div><span style="font-size:12px;color:#64748b;width:18px;text-align:right">1</span></div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px"><span style="font-size:12px;color:#475569;width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Zapopan</span><div style="flex:1;height:7px;background:#f1f5f9;border-radius:4px;overflow:hidden"><div style="width:100%;height:100%;background:#185FA5;border-radius:4px"></div></div><span style="font-size:12px;color:#64748b;width:18px;text-align:right">12</span></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:7px"><span style="font-size:12px;color:#475569;width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Guadalajara</span><div style="flex:1;height:7px;background:#f1f5f9;border-radius:4px;overflow:hidden"><div style="width:75%;height:100%;background:#185FA5;border-radius:4px"></div></div><span style="font-size:12px;color:#64748b;width:18px;text-align:right">9</span></div>
     <div class="divider"></div>
     <div class="sec">Historial 7 dias</div>
     <p style="font-size:12px;color:#94a3b8">El historial se acumula dia a dia</p>
     <div class="divider"></div>
     <div style="background:#f8fafc;border-radius:8px;padding:12px;font-size:12px;color:#475569">
       <div style="font-weight:600;margin-bottom:4px;color:#1e293b">Estado de revision</div>
-      <div id="estado-revision">0 revisados · 18 pendientes</div>
+      <div id="estado-revision">0 revisados · 21 pendientes</div>
     </div>
   </div>
 </div>
@@ -422,9 +473,9 @@
 <div class="footer">Scout GDL · Guadalajara Zona Metropolitana · Actualizado cada dia a las 7:00 AM</div>
 
 <script>
-const prospectos = [{"empresa": "inversion inmobiliaria Guadalajara", "contacto": "", "zona": "Guadalajara", "fuente": "google_trends", "score": 100, "prioridad": "hot", "senal": "Búsqueda máxima 100/100 en Jalisco: inversores activos buscando oportunidades GDL", "url": "", "fecha_deteccion": "2026-06-27"}, {"empresa": "desarrollos residenciales Jalisco", "contacto": "", "zona": "Jalisco", "fuente": "google_trends", "score": 80, "prioridad": "hot", "senal": "Interés 80/100 en Jalisco: demanda activa de desarrollos residenciales en la región", "url": "", "fecha_deteccion": "2026-06-27"}, {"empresa": "Alba Residencial", "contacto": "", "zona": "Zapopan", "fuente": "google_maps", "score": 78, "prioridad": "warm", "senal": "1,948 reseñas, alta visibilidad; desarrollo activo en zona de alto crecimiento Nuevo México", "url": "", "fecha_deteccion": "2026-06-27"}, {"empresa": "casas Tlajomulco", "contacto": "", "zona": "Tlajomulco de Zúñiga", "fuente": "google_trends", "score": 65, "prioridad": "warm", "senal": "Interés 52/100 en Jalisco: compradores buscando vivienda activamente en Tlajomulco", "url": "", "fecha_deteccion": "2026-06-27"}, {"empresa": "GIG Desarrollos Inmobiliarios", "contacto": "", "zona": "Zapopan", "fuente": "google_maps", "score": 62, "prioridad": "warm", "senal": "385 reseñas en Zapopan; desarrolladora con volumen significativo de operaciones activas", "url": "", "fecha_deteccion": "2026-06-27"}, {"empresa": "MSG inmobiliaria", "contacto": "", "zona": "Zapopan", "fuente": "google_maps", "score": 60, "prioridad": "warm", "senal": "Rating 4.6 con oficina en Puerta de Hierro; zona premium con alta demanda de inversión", "url": "", "fecha_deteccion": "2026-06-27"}, {"empresa": "PAIS A.C.", "contacto": "", "zona": "Zapopan", "fuente": "google_maps", "score": 58, "prioridad": "warm", "senal": "Rating 4.7 en Ciudad del Sol Zapopan; agencia con alta reputación en zona de demanda", "url": "", "fecha_deteccion": "2026-06-27"}, {"empresa": "Estinver | Bienes Raíces", "contacto": "", "zona": "Zapopan", "fuente": "google_maps", "score": 55, "prioridad": "warm", "senal": "Rating 4.3, 46 reseñas en Jardines de Guadalupe; agencia activa en zona residencial", "url": "", "fecha_deteccion": "2026-06-27"}, {"empresa": "Casactiva Inmobiliaria", "contacto": "", "zona": "Zapopan", "fuente": "google_maps", "score": 52, "prioridad": "warm", "senal": "Rating 5.0 en Puerta de Hierro/Andares; nicho premium con potencial de co-brokeraje", "url": "", "fecha_deteccion": "2026-06-27"}, {"empresa": "The Mandarinos Residential", "contacto": "", "zona": "Zapopan", "fuente": "google_maps", "score": 50, "prioridad": "cold", "senal": "67 reseñas en Jardines del Valle; desarrollo residencial con presencia en zona de expansión", "url": "", "fecha_deteccion": "2026-06-27"}, {"empresa": "Hotel Suites Internacional", "contacto": "", "zona": "Zapopan", "fuente": "google_maps", "score": 50, "prioridad": "cold", "senal": "Clasificado como real_estate_agency + lodging; inmueble con potencial de reconversión/venta", "url": "", "fecha_deteccion": "2026-06-27"}, {"empresa": "Bienes Raíces Laiz", "contacto": "", "zona": "Guadalajara", "fuente": "google_maps", "score": 48, "prioridad": "cold", "senal": "Agencia en zona Monraz/Plaza Bonita; presencia activa en corredor comercial consolidado", "url": "", "fecha_deteccion": "2026-06-27"}, {"empresa": "Avaluos y Arquitectura", "contacto": "", "zona": "Guadalajara", "fuente": "google_maps", "score": 47, "prioridad": "cold", "senal": "Rating 5.0, servicios de avalúo activos; señal de transacciones en curso en La Calma GDL", "url": "", "fecha_deteccion": "2026-06-27"}, {"empresa": "Administración Colomos Patria", "contacto": "", "zona": "Zapopan", "fuente": "google_maps", "score": 45, "prioridad": "cold", "senal": "Administración de propiedades en corredor Colomos-Patria; zona de alta plusvalía Zapopan", "url": "", "fecha_deteccion": "2026-06-27"}, {"empresa": "ESPACIO Inmobiliario GDL", "contacto": "", "zona": "Guadalajara", "fuente": "google_maps", "score": 44, "prioridad": "cold", "senal": "Agencia en Providencia; zona prime GDL con demanda sostenida de renta y compraventa", "url": "", "fecha_deteccion": "2026-06-27"}, {"empresa": "Vica Inmobiliaria", "contacto": "", "zona": "Guadalajara", "fuente": "google_maps", "score": 42, "prioridad": "cold", "senal": "Ubicada en Providencia 4a Sección; zona premium con pocas reseñas, oportunidad de acercamiento", "url": "", "fecha_deteccion": "2026-06-27"}, {"empresa": "Súper Renta", "contacto": "", "zona": "Guadalajara", "fuente": "google_maps", "score": 41, "prioridad": "cold", "senal": "Agencia de rentas en Jardines del Bosque; mercado de arrendamiento activo en la zona", "url": "", "fecha_deteccion": "2026-06-27"}, {"empresa": "Real Patria Tierra y Armonía", "contacto": "", "zona": "Zapopan", "fuente": "google_maps", "score": 40, "prioridad": "cold", "senal": "Agencia en Atemajac del Valle Zapopan; zona en desarrollo con potencial de terrenos", "url": "", "fecha_deteccion": "2026-06-27"}];
-const csvContent = `empresa,contacto,zona,fuente,score,prioridad,senal,url,fecha_deteccion\n"inversion inmobiliaria Guadalajara","","Guadalajara","google_trends","100","hot","Búsqueda máxima 100/100 en Jalisco: inversores activos buscando oportunidades GDL","","2026-06-27"\n"desarrollos residenciales Jalisco","","Jalisco","google_trends","80","hot","Interés 80/100 en Jalisco: demanda activa de desarrollos residenciales en la región","","2026-06-27"\n"Alba Residencial","","Zapopan","google_maps","78","warm","1948 reseñas alta visibilidad; desarrollo activo en zona de alto crecimiento Nuevo México","","2026-06-27"\n"casas Tlajomulco","","Tlajomulco de Zúñiga","google_trends","65","warm","Interés 52/100 en Jalisco: compradores buscando vivienda activamente en Tlajomulco","","2026-06-27"\n"GIG Desarrollos Inmobiliarios","","Zapopan","google_maps","62","warm","385 reseñas en Zapopan; desarrolladora con volumen significativo de operaciones activas","","2026-06-27"\n"MSG inmobiliaria","","Zapopan","google_maps","60","warm","Rating 4.6 con oficina en Puerta de Hierro; zona premium con alta demanda de inversión","","2026-06-27"\n"PAIS A.C.","","Zapopan","google_maps","58","warm","Rating 4.7 en Ciudad del Sol Zapopan; agencia con alta reputación en zona de demanda","","2026-06-27"\n"Estinver | Bienes Raíces","","Zapopan","google_maps","55","warm","Rating 4.3 46 reseñas en Jardines de Guadalupe; agencia activa en zona residencial","","2026-06-27"\n"Casactiva Inmobiliaria","","Zapopan","google_maps","52","warm","Rating 5.0 en Puerta de Hierro/Andares; nicho premium con potencial de co-brokeraje","","2026-06-27"\n"The Mandarinos Residential","","Zapopan","google_maps","50","cold","67 reseñas en Jardines del Valle; desarrollo residencial con presencia en zona de expansión","","2026-06-27"\n"Hotel Suites Internacional","","Zapopan","google_maps","50","cold","Clasificado como real_estate_agency + lodging; inmueble con potencial de reconversión/venta","","2026-06-27"\n"Bienes Raíces Laiz","","Guadalajara","google_maps","48","cold","Agencia en zona Monraz/Plaza Bonita; presencia activa en corredor comercial consolidado","","2026-06-27"\n"Avaluos y Arquitectura","","Guadalajara","google_maps","47","cold","Rating 5.0 servicios de avalúo activos; señal de transacciones en curso en La Calma GDL","","2026-06-27"\n"Administración Colomos Patria","","Zapopan","google_maps","45","cold","Administración de propiedades en corredor Colomos-Patria; zona de alta plusvalía Zapopan","","2026-06-27"\n"ESPACIO Inmobiliario GDL","","Guadalajara","google_maps","44","cold","Agencia en Providencia; zona prime GDL con demanda sostenida de renta y compraventa","","2026-06-27"\n"Vica Inmobiliaria","","Guadalajara","google_maps","42","cold","Ubicada en Providencia 4a Sección; zona premium con pocas reseñas oportunidad de acercamiento","","2026-06-27"\n"Súper Renta","","Guadalajara","google_maps","41","cold","Agencia de rentas en Jardines del Bosque; mercado de arrendamiento activo en la zona","","2026-06-27"\n"Real Patria Tierra y Armonía","","Zapopan","google_maps","40","cold","Agencia en Atemajac del Valle Zapopan; zona en desarrollo con potencial de terrenos","","2026-06-27"`;
-const fecha = '2026-06-27';
+const prospectos = [{"empresa": "Guadalajara sede Mundial 2026", "contacto": "", "zona": "Guadalajara", "fuente": "noticias", "score": 85, "prioridad": "hot", "senal": "GDL sede mundialista activa; boom hotelero y demanda de renta corta/larga generada", "url": "https://www.elfinanciero.com.mx/opinion/jeanette-leyva/2026/06/16/cdmx-guadalajara-y-monterrey-quien-ha-tenido-el-mejor-mundial/", "fecha_deteccion": "2026-06-28"}, {"empresa": "Alba Residencial", "contacto": "", "zona": "Zapopan", "fuente": "google_maps", "score": 82, "prioridad": "hot", "senal": "Desarrollador activo con 1,948 reseñas, alta visibilidad y volumen de operaciones", "url": "", "fecha_deteccion": "2026-06-28"}, {"empresa": "GIG Desarrollos Inmobiliarios", "contacto": "", "zona": "Zapopan", "fuente": "google_maps", "score": 78, "prioridad": "warm", "senal": "385 reseñas, desarrollador con operación continua en zona de alta demanda", "url": "", "fecha_deteccion": "2026-06-28"}, {"empresa": "Hotel Suites Internacional", "contacto": "", "zona": "Zapopan", "fuente": "google_maps", "score": 75, "prioridad": "warm", "senal": "Hotel-inmobiliaria con 277 reseñas; modelo mixto indica necesidad de gestión de activos", "url": "", "fecha_deteccion": "2026-06-28"}, {"empresa": "MSG inmobiliaria", "contacto": "", "zona": "Zapopan", "fuente": "google_maps", "score": 74, "prioridad": "warm", "senal": "Rating 4.6 con 31 reseñas en Puerta de Hierro, zona premium con alta rotación", "url": "", "fecha_deteccion": "2026-06-28"}, {"empresa": "Casactiva Inmobiliaria", "contacto": "", "zona": "Zapopan", "fuente": "google_maps", "score": 72, "prioridad": "warm", "senal": "Rating perfecto 5.0 en Andares/Puerta de Hierro, oficina IOS indica expansión reciente", "url": "", "fecha_deteccion": "2026-06-28"}, {"empresa": "PAIS A.C.", "contacto": "", "zona": "Zapopan", "fuente": "google_maps", "score": 71, "prioridad": "warm", "senal": "Rating 4.7 con 62 reseñas en Ciudad del Sol, organización activa con credibilidad alta", "url": "", "fecha_deteccion": "2026-06-28"}, {"empresa": "Estinver | Bienes Raíces", "contacto": "", "zona": "Zapopan", "fuente": "google_maps", "score": 68, "prioridad": "warm", "senal": "Rating 4.3 con 46 reseñas, enfoque en inversión inmobiliaria en Jardines de Guadalupe", "url": "", "fecha_deteccion": "2026-06-28"}, {"empresa": "Young World", "contacto": "", "zona": "Guadalajara", "fuente": "google_maps", "score": 65, "prioridad": "warm", "senal": "183 reseñas, perfil mixto travel+inmobiliaria sobre Vallarta indica oportunidad relocation", "url": "", "fecha_deteccion": "2026-06-28"}, {"empresa": "Bienes Raíces Laiz", "contacto": "", "zona": "Guadalajara", "fuente": "google_maps", "score": 62, "prioridad": "warm", "senal": "Rating 4.2 con 25 reseñas en zona Monraz, presencia activa en corredor comercial", "url": "", "fecha_deteccion": "2026-06-28"}, {"empresa": "The Mandarinos Residential", "contacto": "", "zona": "Zapopan", "fuente": "google_maps", "score": 61, "prioridad": "warm", "senal": "67 reseñas en Jardines del Valle, desarrollo residencial con flujo constante de clientes", "url": "", "fecha_deteccion": "2026-06-28"}, {"empresa": "Regus Guadalajara", "contacto": "", "zona": "Zapopan", "fuente": "google_maps", "score": 60, "prioridad": "warm", "senal": "Operador de oficinas flex en Plaza del Sol; demanda de espacios comerciales post-Mundial", "url": "", "fecha_deteccion": "2026-06-28"}, {"empresa": "Administración Colomos Patria", "contacto": "", "zona": "Zapopan", "fuente": "google_maps", "score": 58, "prioridad": "cold", "senal": "Administradora de inmuebles con 19 reseñas en zona Colomos, nicho de administración activo", "url": "", "fecha_deteccion": "2026-06-28"}, {"empresa": "Avaluos y Arquitectura", "contacto": "", "zona": "Guadalajara", "fuente": "google_maps", "score": 55, "prioridad": "cold", "senal": "Rating 5.0 en avalúos, servicio complementario clave en mercado activo post-Mundial", "url": "", "fecha_deteccion": "2026-06-28"}, {"empresa": "Súper Renta", "contacto": "", "zona": "Guadalajara", "fuente": "google_maps", "score": 54, "prioridad": "cold", "senal": "49 reseñas en Jardines del Bosque, enfocado en rentas con oportunidad de captación", "url": "", "fecha_deteccion": "2026-06-28"}, {"empresa": "ESPACIO Inmobiliario GDL", "contacto": "", "zona": "Guadalajara", "fuente": "google_maps", "score": 52, "prioridad": "cold", "senal": "Ubicado en Providencia con 16 reseñas, zona premium con potencial de colaboración", "url": "", "fecha_deteccion": "2026-06-28"}, {"empresa": "Real Patria Tierra y Armonía", "contacto": "", "zona": "Zapopan", "fuente": "google_maps", "score": 48, "prioridad": "cold", "senal": "Inmobiliaria en Atemajac del Valle con presencia modesta, zona en desarrollo", "url": "", "fecha_deteccion": "2026-06-28"}, {"empresa": "Vica Inmobiliaria", "contacto": "", "zona": "Guadalajara", "fuente": "google_maps", "score": 45, "prioridad": "cold", "senal": "Ubicada en Providencia 4a Sección, bajo volumen de reseñas indica cartera en construcción", "url": "", "fecha_deteccion": "2026-06-28"}, {"empresa": "Guía Inmobiliaria Casas y Terrenos", "contacto": "", "zona": "Guadalajara", "fuente": "google_maps", "score": 44, "prioridad": "cold", "senal": "Portal de guía inmobiliaria con mínimas reseñas, potencial como canal de difusión", "url": "", "fecha_deteccion": "2026-06-28"}, {"empresa": "Abasto Inmobiliario", "contacto": "", "zona": "Zapopan", "fuente": "google_maps", "score": 42, "prioridad": "cold", "senal": "Inmobiliaria en Paraísos del Colli con rating bajo, oportunidad de mejora de servicio", "url": "", "fecha_deteccion": "2026-06-28"}, {"empresa": "Inmobiliaria Poa", "contacto": "", "zona": "Guadalajara", "fuente": "google_maps", "score": 40, "prioridad": "cold", "senal": "Inmobiliaria en Ladrón de Guevara con presencia mínima, potencial de reactivación", "url": "", "fecha_deteccion": "2026-06-28"}];
+const csvContent = `empresa,contacto,zona,fuente,score,prioridad,senal,url,fecha_deteccion\n"Guadalajara sede Mundial 2026","","Guadalajara","noticias","85","hot","GDL sede mundialista activa; boom hotelero y demanda de renta corta/larga generada","https://www.elfinanciero.com.mx/opinion/jeanette-leyva/2026/06/16/cdmx-guadalajara-y-monterrey-quien-ha-tenido-el-mejor-mundial/","2026-06-28"\n"Alba Residencial","","Zapopan","google_maps","82","hot","Desarrollador activo con 1948 reseñas alta visibilidad y volumen de operaciones","","2026-06-28"\n"GIG Desarrollos Inmobiliarios","","Zapopan","google_maps","78","warm","385 reseñas desarrollador con operación continua en zona de alta demanda","","2026-06-28"\n"Hotel Suites Internacional","","Zapopan","google_maps","75","warm","Hotel-inmobiliaria con 277 reseñas; modelo mixto indica necesidad de gestión de activos","","2026-06-28"\n"MSG inmobiliaria","","Zapopan","google_maps","74","warm","Rating 4.6 con 31 reseñas en Puerta de Hierro zona premium con alta rotación","","2026-06-28"\n"Casactiva Inmobiliaria","","Zapopan","google_maps","72","warm","Rating perfecto 5.0 en Andares/Puerta de Hierro oficina IOS indica expansión reciente","","2026-06-28"\n"PAIS A.C.","","Zapopan","google_maps","71","warm","Rating 4.7 con 62 reseñas en Ciudad del Sol organización activa con credibilidad alta","","2026-06-28"\n"Estinver | Bienes Raíces","","Zapopan","google_maps","68","warm","Rating 4.3 con 46 reseñas enfoque en inversión inmobiliaria en Jardines de Guadalupe","","2026-06-28"\n"Young World","","Guadalajara","google_maps","65","warm","183 reseñas perfil mixto travel+inmobiliaria sobre Vallarta indica oportunidad relocation","","2026-06-28"\n"Bienes Raíces Laiz","","Guadalajara","google_maps","62","warm","Rating 4.2 con 25 reseñas en zona Monraz presencia activa en corredor comercial","","2026-06-28"\n"The Mandarinos Residential","","Zapopan","google_maps","61","warm","67 reseñas en Jardines del Valle desarrollo residencial con flujo constante de clientes","","2026-06-28"\n"Regus Guadalajara","","Zapopan","google_maps","60","warm","Operador de oficinas flex en Plaza del Sol; demanda de espacios comerciales post-Mundial","","2026-06-28"\n"Administración Colomos Patria","","Zapopan","google_maps","58","cold","Administradora de inmuebles con 19 reseñas en zona Colomos nicho de administración activo","","2026-06-28"\n"Avaluos y Arquitectura","","Guadalajara","google_maps","55","cold","Rating 5.0 en avalúos servicio complementario clave en mercado activo post-Mundial","","2026-06-28"\n"Súper Renta","","Guadalajara","google_maps","54","cold","49 reseñas en Jardines del Bosque enfocado en rentas con oportunidad de captación","","2026-06-28"\n"ESPACIO Inmobiliario GDL","","Guadalajara","google_maps","52","cold","Ubicado en Providencia con 16 reseñas zona premium con potencial de colaboración","","2026-06-28"\n"Real Patria Tierra y Armonía","","Zapopan","google_maps","48","cold","Inmobiliaria en Atemajac del Valle con presencia modesta zona en desarrollo","","2026-06-28"\n"Vica Inmobiliaria","","Guadalajara","google_maps","45","cold","Ubicada en Providencia 4a Sección bajo volumen de reseñas indica cartera en construcción","","2026-06-28"\n"Guía Inmobiliaria Casas y Terrenos","","Guadalajara","google_maps","44","cold","Portal de guía inmobiliaria con mínimas reseñas potencial como canal de difusión","","2026-06-28"\n"Abasto Inmobiliario","","Zapopan","google_maps","42","cold","Inmobiliaria en Paraísos del Colli con rating bajo oportunidad de mejora de servicio","","2026-06-28"\n"Inmobiliaria Poa","","Guadalajara","google_maps","40","cold","Inmobiliaria en Ladrón de Guevara con presencia mínima potencial de reactivación","","2026-06-28"`;
+const fecha = '2026-06-28';
 let filtroActivo = 'all';
 let tipoFiltro = 'prio';
 let busquedaActiva = '';
