@@ -27,8 +27,7 @@ schedule.every().day.at("07:00").do(job)
 log.info("🕐 Scheduler activo — esperando las 7:00 am...")
 log.info("   Presiona Ctrl+C para detener")
 
-# Ejecutar también de inmediato al arrancar (opcional)
-# job()
+
 
 while True:
     schedule.run_pending()
