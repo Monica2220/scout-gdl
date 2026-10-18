@@ -1,10 +1,4 @@
-"""
-scheduler.py — Ejecuta el agente de scouting todos los días a las 7:00 am
-Corre este script una sola vez; se mantiene vivo en segundo plano.
 
-Alternativa recomendada: usar GitHub Actions (ver .github/workflows/scout.yml)
-que no requiere tener una máquina encendida.
-"""
 
 import schedule
 import time
